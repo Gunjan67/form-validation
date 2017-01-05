@@ -1,0 +1,134 @@
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+<script>
+//Form validation
+/*
+* Step 1: Need a form name
+* Step 2: Validation match value
+* Step 3: Validation Url 
+* Step 4: Rules Set
+* Step 5: Message set
+*
+*/
+$.validator.addMethod("alpha", function(value, element) {
+    return this.optional(element) || value == value.match(/^[a-zA-Z]+$/);
+ });
+$(function() {
+  $("form[name='details']").validate({ //declare form name
+
+    rules: {
+      title:{
+        required:true,
+      },
+      first_name: {
+        required: true,
+        alpha: true,
+      },
+      last_name: {
+        required: true,
+        //minlength: 5
+      },
+      organization: {
+        required: true,
+      },
+      
+      address: {
+        required: true,
+      },
+      city: {
+        required: true,
+        //minlength: 5
+      },
+      state: {
+        required: true,
+      },
+      pincode:{
+        required:true,
+        number:true,
+      },
+      country: {
+        required: true,
+      },
+      phone: {
+        required: true,
+        number:true,
+        //minlength: 5
+      },
+      email: {
+        required: true,
+        email: true,
+      },
+      accompanyingperson:{
+        required:true,
+      },
+      
+      name_a: {
+        required: true,
+        //minlength: 5
+      },
+      name_b: {
+        required: true,
+      },
+    },
+
+    messages: {
+      
+      first_name: {
+        required: "It is mandatory to enter First Name.",
+        alpha: "Only alphabats",
+      },
+      last_name: {
+        required: "It is mandatory to enter Last Name.",
+        //minlength: 5
+      },
+      organization: {
+        required: "It is mandatory to enter Institution/ Organization.",
+      },
+      
+      address: {
+        required: "It is mandatory to enter Address.",
+      },
+      city: {
+        required: "It is mandatory to enter City.",
+        //minlength: 5
+      },
+      state: {
+        required: "It is mandatory to select State.",
+      },
+      pincode:{
+        required:"It is mandatory to enter Pin code.",
+        number:"Enter only Numbers.",
+      },
+      country: {
+        required: "It is mandatory to enter Country.",
+      },
+      phone: {
+        required: "It is mandatory to enter Contact Number.",
+        number:"Enter only Numbers.",
+        //minlength: 5
+      },
+      email: {
+        required: "Please enter Email ID.",
+        email: "Please ente only valid Email ID.",
+      },
+      // accompanyingperson:{
+      //   required:"It is mandatory to enter Contact Number.",
+      // },
+      
+      name_a: {
+        required: "It is mandatory to enter Name a.",
+        //minlength: 5
+      },
+      name_b: {
+        required: "It is mandatory to enter Name b.",
+        //minlength: 5
+      }
+      
+    },
+
+    submitHandler: function(form) {
+      form.submit();
+    }
+  });
+});
+
+</script>
